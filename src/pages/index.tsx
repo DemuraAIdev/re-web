@@ -1,10 +1,12 @@
 import { useTheme } from 'next-themes'
 import Link from '@/components/CustomLink'
+import { PageSEO } from '@/components/SEO'
 
 export default function Home() {
   const { theme, setTheme } = useTheme()
   return (
     <>
+      <PageSEO title="Vahry Iskandar" description="Home page of Abdul Vaiz Vahry Iskandar" />
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
         <div
           className="animate-text bg-gradient-to-r 
