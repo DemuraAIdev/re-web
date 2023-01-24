@@ -61,6 +61,7 @@ module.exports = {
         shrink: 'shrink 1.5s infinite',
         expand: 'expand 1.5s infinite',
         blob: 'blob 7s infinite',
+        cursor: 'cursor .6s linear infinite alternate',
       },
       spacing: {
         '9/16': '56.25%',

@@ -5,6 +5,7 @@ import headerNavLinks from '@/config/NavLinks';
 import Container from './Container';
 import MobileNav from './SmNav';
 import SwitchDark from './DarkSwitch';
+import Footer from './Footer';
 
 export default function NavigationBar({ children }: Conta) {
     return (
@@ -27,8 +28,10 @@ export default function NavigationBar({ children }: Conta) {
                 </nav>
             </header>
             <Container>
-                <main className="mb-auto mt-24">{children}</main>
+                <main className="mb-auto mt-20">{children}</main>
+                <Footer />
             </Container>
+
         </div>
     )
 }

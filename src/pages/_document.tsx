@@ -15,7 +15,7 @@ export default function Document() {
           content="#000"
         />
       </Head>
-      <body className="antialiased">
+      <body className="antialiased bg-white dark:bg-black font-mono">
         <Main />
         <NextScript />
       </body>
