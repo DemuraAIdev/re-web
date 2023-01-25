@@ -1,6 +1,6 @@
 import Link from './CustomLink'
 import NowPlaying from './NowPlaying'
-import NavLinks from "@/config/NavLinks"
+import { OtherLinks, headerNavLinks } from '@/config/NavLinks'
 
 export default function Footer() {
     return (
@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="grid w-full max-w-2xl grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
                 <div className="flex flex-col space-y-4">
                     <p className='font-bold'>Navigation</p>
-                    {NavLinks.map((link) => (
+                    {headerNavLinks.map((link) => (
                         <Link
                             key={link.title}
                             href={link.href}
@@ -24,7 +24,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col space-y-4">
                     <p className='font-bold'>Other</p>
-                    {NavLinks.map((link) => (
+                    {headerNavLinks.map((link) => (
                         <Link
                             key={link.title}
                             href={link.href}
@@ -36,7 +36,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col space-y-4">
                     <p className='font-bold'>External</p>
-                    {NavLinks.map((link) => (
+                    {OtherLinks.map((link) => (
                         <Link
                             key={link.title}
                             href={link.href}

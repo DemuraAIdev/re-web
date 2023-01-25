@@ -1,4 +1,4 @@
-const headerNavLinks = [
+export const headerNavLinks = [
     { href: '/', title: 'Home' },
     { href: '/guestbook', title: 'Guestbook' },
     { href: '/blog', title: 'Blog' },
@@ -6,4 +6,13 @@ const headerNavLinks = [
     { href: '/about', title: 'About' },
 ]
 
-export default headerNavLinks
+export const OtherLinks = [
+    { href: '/tag', title: 'Tags' },
+    { href: '/newsletter', title: 'Newsletter' },
+    { href: '/rss.xml', title: 'RSS' },
+]
+
+export const ExternalLinks = [
+    { href: 'https://github.com/DemuraAIdev', title: 'GitHub' },
+    { href: 'https://twitter.com/Abdulvaiz2', title: 'Twitter' },
+]
