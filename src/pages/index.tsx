@@ -28,8 +28,8 @@ export default function Home({ posts }: { posts: FrontMatter[] }) {
           </h1>
         </div>
         <div>
+          <Typed />
           <p className="text-lg leading-7 text-black dark:text-gray-400">
-            <Typed /> <br />
             I am a website developer, bot, graphic designer, and nft artist. I learned to make a website from 2019
 
             <Link
