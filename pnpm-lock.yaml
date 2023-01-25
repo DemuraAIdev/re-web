@@ -6,6 +6,7 @@ specifiers:
   '@svgr/webpack': ^6.5.1
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.9
+  '@types/aos': ^3.0.4
   '@types/github-slugger': 1.3.0
   '@types/js-yaml': ^4.0.5
   '@types/node': 18.11.18
@@ -20,6 +21,7 @@ specifiers:
   gray-matter: ^4.0.3
   hast-util-to-string: ^2.0.0
   image-size: ^1.0.2
+  install: ^0.13.0
   js-yaml: ^4.1.0
   mdx-bundler: ^9.2.1
   next: 13.1.5
@@ -46,8 +48,8 @@ specifiers:
 
 dependencies:
   '@next/font': 13.1.5
+  '@types/aos': 3.0.4
   '@types/github-slugger': 1.3.0
-  '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   aos: 3.0.0-beta.6
@@ -86,7 +88,9 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.4
   '@types/js-yaml': 4.0.5
+  '@types/node': 18.11.18
   autoprefixer: 10.4.13_postcss@8.4.21
+  install: 0.13.0
   postcss: 8.4.21
   tailwindcss: 3.2.4_postcss@8.4.21
 
@@ -2127,6 +2131,10 @@ packages:
       '@types/estree': 1.0.0
     dev: false
 
+  /@types/aos/3.0.4:
+    resolution: {integrity: sha512-mna6Jd6bdK1NpwarLopGvXOgUoCfj0470IwLxuVOFDElTGI0JTd7xSGQ0AjbAEnHErC/b3fA9t2uB3IXVKmckA==}
+    dev: false
+
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
     dependencies:
@@ -2181,7 +2189,7 @@ packages:
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
-    dev: false
+    dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -4003,6 +4011,11 @@ packages:
   /inline-style-parser/0.1.1:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
     dev: false
+
+  /install/0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
+    dev: true
 
   /internal-slot/1.0.4:
     resolution: {integrity: sha512-tA8URYccNzMo94s5MQZgH8NB/XTa6HsOo0MLfXTKKEnHVVdegzaQoFZ7Jp44bdvLvY2waT5dc+j5ICEswhi7UQ==}
