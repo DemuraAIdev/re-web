@@ -14,7 +14,6 @@ export default function TypedBios() {
         });
         return () => typed.current.destroy();
     }, []);
-    const { t } = useTranslation("Type");
 
     return (
         <>
