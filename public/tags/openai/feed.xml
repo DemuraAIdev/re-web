@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>Vahry Iskandar</title>
+      <link>https://vahryiskandar.my.id/blog</link>
+      <description>I am a website developer, bot, graphic designer, and nft artist. I learned to make a website from 2019</description>
+      <language>en-US</language>
+      <managingEditor>cyberaioff@gmail.com (Abdul Vaiz)</managingEditor>
+      <webMaster>cyberaioff@gmail.com (Abdul Vaiz)</webMaster>
+      <lastBuildDate>Wed, 21 Dec 2022 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://vahryiskandar.my.id/tags/openai/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://vahryiskandar.my.id/blog/chatgpt</guid>
+    <title>How Chat GPT is Changing the Game</title>
+    <link>https://vahryiskandar.my.id/blog/chatgpt</link>
+    <description>Chat GPT is a natural language processing tool that helps chatbots generate human-like text. Based on the advanced GPT-3 model, Chat GPT allows for more natural and engaging conversations in real-time. It is widely used in customer service chatbots, virtual assistants, and conversational AI platforms.</description>
+    <pubDate>Wed, 21 Dec 2022 00:00:00 GMT</pubDate>
+    <author>cyberaioff@gmail.com (Abdul Vaiz)</author>
+    <category>ai</category><category>openai</category>
+  </item>
+
+    </channel>
+  </rss>

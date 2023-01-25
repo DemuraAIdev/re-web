@@ -6,7 +6,7 @@ const MAX_DISPLAY = 2;
 export default function LatestBlog({ posts }: { posts: FrontMatter[] }) {
     return (
         <>
-            <ul className="grid grid-cols-1 divide-y">
+            <ul className="grid grid-cols-1 divide-y" data-aos="zoom-out-down">
                 {!posts.length && "No posts found."}
                 {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
                     const { slug, date, title, summary, tags } = frontMatter;
