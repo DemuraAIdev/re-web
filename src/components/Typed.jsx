@@ -1,6 +1,6 @@
 import React from "react";
 import Typed from "typed.js";
-
+import useTranslation from "next-translate/useTranslation";
 export default function TypedBios() {
     let el = React.useRef(null);
     let typed = React.useRef(null);
@@ -15,21 +15,25 @@ export default function TypedBios() {
         });
         return () => typed.current.destroy();
     }, []);
+    const { t } = useTranslation("Type");
 
     return (
-        <div>
+        <>
             <ul id="bios" className="hidden">
                 <li>
-                    I Live in a country called Indonesia🏠
+                    {t("Live")} <b className="font-medium">Indonesia</b>.
+                </li>
+                <li>
+                    {t("myfirstprogram")} <b className="font-medium">HTML</b>.
                 </li>
                 <li>I love NODEJS.</li>
-                <li>This website under construction 🚧</li>
+                <li>{t("workmost")}</li>
                 <li>I love EDM music.</li>
             </ul>
             <span
                 ref={el}
                 className="text-lg text-neutral-900 dark:text-neutral-200"
             />
-        </div>
+        </>
     );
 }

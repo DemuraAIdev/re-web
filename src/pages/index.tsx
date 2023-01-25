@@ -1,6 +1,6 @@
 import Link from '@/components/CustomLink'
 import { PageSEO } from '@/components/SEO'
-import Typed from '@/components/Typed'
+import Typed from '@/components/Typed.jsx'
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 import LatestBlog from '@/components/LatestBlog';
 import type { FrontMatter } from '@/lib/mdx';
