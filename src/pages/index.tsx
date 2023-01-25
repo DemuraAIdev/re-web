@@ -1,13 +1,21 @@
-import { useTheme } from 'next-themes'
 import Link from '@/components/CustomLink'
 import { PageSEO } from '@/components/SEO'
+import Typed from '@/components/Typed'
+import { getAllFilesFrontMatter } from '@/lib/mdx';
+import LatestBlog from '@/components/LatestBlog';
+import type { FrontMatter } from '@/lib/mdx';
 
-export default function Home() {
-  const { theme, setTheme } = useTheme()
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter("blog");
+
+  return { props: { posts } };
+}
+
+export default function Home({ posts }: { posts: FrontMatter[] }) {
   return (
     <>
       <PageSEO title="Vahry Iskandar" description="Home page of Abdul Vaiz Vahry Iskandar" />
-      <div className="space-y-2 pt-6 pb-8 md:space-y-5">
+      <div className="space-y-2 pt-6 pb-8 md:space-y-5 md:h-screen lg:h-sreen md:lg:mt-20 lg:mt-20">
         <div
           className="animate-text bg-gradient-to-r 
             from-[#6EE7B7] via-[#3B82F6]  to-[#9333EA]
@@ -21,7 +29,9 @@ export default function Home() {
         </div>
         <div>
           <p className="text-lg leading-7 text-black dark:text-gray-400">
+            <Typed />
             I am a website developer, bot, graphic designer, and nft artist. I learned to make a website from 2019
+
             <Link
               className=" bg-cust1 umami--home--navigation ml-2 font-medium leading-6"
               href="/menu"
@@ -31,6 +41,11 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <h2 className="text-xl font-extrabold leading-5 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-7 md:text-3xl md:leading-9">
+        Latest blog posts
+      </h2>
+      <LatestBlog posts={posts} />
+
     </>
   )
 }

@@ -1,24 +1,30 @@
-import fs from "fs";
-import { bundleMDX } from "mdx-bundler";
-import matter from "gray-matter";
-import path from "path";
-import readingTime from "reading-time";
-import getAllFilesRecursively from "./utils/files";
+import { bundleMDX } from 'mdx-bundler'
+import fs from 'fs'
+import matter from 'gray-matter'
+import path from 'path'
+import readingTime from 'reading-time'
+import getAllFilesRecursively from './utils/files'
 // Remark packages
-import remarkGfm from "remark-gfm";
-import remarkFootnotes from "remark-footnotes";
-import remarkCodeTitles from "./remark/code-title";
-import remarkTocHeadings from "./remark/toc-headings";
-import remarkImgToJsx from "./remark/img-to-jsx";
+import remarkGfm from 'remark-gfm'
+import remarkFootnotes from 'remark-footnotes'
+import remarkMath from 'remark-math'
+import remarkExtractFrontmatter from './remark/extract-frontmatter'
+import remarkCodeTitles from './remark/code-title'
+import remarkTocHeadings from './remark/toc-headings'
+import remarkImgToJsx from './remark/img-to-jsx'
 // Rehype packages
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrismPlus from "rehype-prism-plus";
-import { TocHeading } from "@/components/TOCInline";
-const root = process.cwd();
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeKatex from 'rehype-katex'
+import rehypeCitation from 'rehype-citation'
+import rehypePrismPlus from 'rehype-prism-plus'
+import rehypePresetMinify from 'rehype-preset-minify'
+import type { TocHeading } from "@/components/TOCInline"
+
+const root = process.cwd()
 
 export function getFiles(type: string) {
-    const prefixPaths = path.join(root, "data", type);
+    const prefixPaths = path.join(root, "src", "data", type);
     const files = getAllFilesRecursively(prefixPaths);
     // Only want to return blog/path and ignore root
     return files.map((file: string) => file.slice(prefixPaths.length + 1));
@@ -38,13 +44,13 @@ export interface FrontMatter {
     title: string;
     summary: string;
     date: string;
+    initialDisplayPosts: number;
     url: string;
     tags: string[];
     images: string[];
     lastModified: string;
     draft: boolean;
     slug: string;
-    viewCount?: string;
     layout: string;
 }
 
@@ -59,9 +65,12 @@ type FileBySlug = {
     frontMatter: EnhancedFrontMatter;
 };
 
+
+
+
 export async function getFileBySlug(type: string, slug: string): Promise<FileBySlug> {
-    const mdxPath = path.join(root, "data", type, `${slug}.mdx`);
-    const mdPath = path.join(root, "data", type, `${slug}.md`);
+    const mdxPath = path.join(root, "src", "data", type, `${slug}.mdx`);
+    const mdPath = path.join(root, "src", "data", type, `${slug}.md`);
     const source = fs.existsSync(mdxPath)
         ? fs.readFileSync(mdxPath, "utf8")
         : fs.readFileSync(mdPath, "utf8");
@@ -96,17 +105,22 @@ export async function getFileBySlug(type: string, slug: string): Promise<FileByS
             // plugins in the future.
             options.remarkPlugins = [
                 ...(options.remarkPlugins ?? []),
+                remarkExtractFrontmatter,
                 [remarkTocHeadings, { exportRef: toc }],
                 remarkGfm,
                 remarkCodeTitles,
                 [remarkFootnotes, { inlineNotes: true }],
+                remarkMath,
                 remarkImgToJsx,
             ] as any;
             options.rehypePlugins = [
                 ...(options.rehypePlugins ?? []),
                 rehypeSlug,
                 rehypeAutolinkHeadings,
+                rehypeKatex,
+                [rehypeCitation, { path: path.join(root, "src", 'data') }],
                 [rehypePrismPlus, { ignoreMissing: true }],
+                rehypePresetMinify,
             ];
             return options;
         },
@@ -134,7 +148,7 @@ export async function getFileBySlug(type: string, slug: string): Promise<FileByS
 }
 
 export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatter[]> {
-    const prefixPaths = path.join(root, "data", folder);
+    const prefixPaths = path.join(root, "src", "data", folder);
 
     const files = getAllFilesRecursively(prefixPaths);
 
