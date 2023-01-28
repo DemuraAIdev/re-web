@@ -123,7 +123,7 @@ export async function getFileBySlug(type: 'authors' | 'blog', slug: string): Pro
             ];
             return options;
         },
-        esbuildOptions: (options: { loader: any }) => {
+        esbuildOptions: (options) => {
             options.loader = {
                 ...options.loader,
                 ".js": "jsx",
