@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import ExtLink from './Icons/ExtLink.svg'
-import type { CustomLinkType } from '@/types'
+
+export interface CustomLinkType extends React.LinkHTMLAttributes<HTMLAnchorElement> {
+    href: string;
+    showIcon?: boolean;
+}
 
 export default function CustomLink({ href, children, className, showIcon = true, ...rest }: CustomLinkType) {
     const isInternalLink = href && href.startsWith('/')
