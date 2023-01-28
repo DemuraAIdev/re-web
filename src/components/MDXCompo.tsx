@@ -9,6 +9,7 @@ import { useMemo } from "react";
 export const MDXComponents: ComponentMap = {
     TOCInline,
     Image,
+    // @ts-expect-error
     a: Link,
     pre: Pre,
     wrapper: PostLayout,
