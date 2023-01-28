@@ -1,7 +1,7 @@
 import { Conta } from '@/types';
 import { useRouter } from "next/router";
 import Link from './CustomLink';
-import headerNavLinks from '@/config/NavLinks';
+import { headerNavLinks } from '@/config/NavLinks';
 import Container from './Container';
 import MobileNav from './SmNav';
 import SwitchDark from './DarkSwitch';
