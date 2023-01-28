@@ -56,6 +56,7 @@ export interface FrontMatter {
 
 export interface EnhancedFrontMatter extends FrontMatter {
     fileName: string;
+    readingTime: number;
 }
 
 type FileBySlug = {
@@ -63,9 +64,6 @@ type FileBySlug = {
     toc: TocHeading[];
     frontMatter: EnhancedFrontMatter;
 };
-
-
-
 
 export async function getFileBySlug(type: 'authors' | 'blog', slug: string): Promise<FileBySlug> {
     const mdxPath = path.join(root, "src", "data", type, `${slug}.mdx`);
@@ -98,7 +96,7 @@ export async function getFileBySlug(type: 'authors' | 'blog', slug: string): Pro
         source,
         // mdx imports can be automatically source from the components directory
         cwd: path.join(process.cwd(), "components"),
-        mdxOptions(options) {
+        xdmOptions(options) {
             // this is the recommended way to add custom remark/rehype plugins:
             // The syntax might look weird, but it protects you in case we add/remove
             // plugins in the future.

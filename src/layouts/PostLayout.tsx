@@ -23,7 +23,8 @@ interface PostLayoutProps extends Conta {
 }
 
 export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
-    const { slug, fileName, date, title, images, tags } = frontMatter;
+    const { slug, fileName, date, title, images, tags, readingTime } = frontMatter;
+    const roundedReadingMinutes = Math.round(readingTime);
     return (
         <Container>
             <BlogSEO {...frontMatter} url={`http://vahryiskandar.my.id/blog/${slug}`} />
@@ -53,6 +54,10 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                             <div>
                                 <PageTitle>{title}</PageTitle>
                             </div>
+                            <span className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                                {roundedReadingMinutes}{" "}
+                                {roundedReadingMinutes == 1 ? " minute " : " minutes " + " read - "}
+                            </span>
                         </div>
                     </header>
                     <div className=" xl:pb-0">
