@@ -3,7 +3,7 @@ import PageTitle from '@/components/PageTitle'
 import { BlogSEO } from "@/components/SEO";
 import Image from "next/image";
 import Tag from '@/components/Tag'
-import ScrollTopAndComment from '@/components/STC.jsx'
+import ScrollTopAndComment from '@/components/STC'
 import { Conta } from "@/types";
 import { EnhancedFrontMatter } from "@/lib/mdx";
 import Container from "@/components/Container";

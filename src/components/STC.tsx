@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import ScrollTop from './Icons/ScrollTop.svg'
 import CommentIcon from './Icons/Comment.svg'
 
-export default function STC() {
+const ScrollTopAndComment = () => {
     const [show, setShow] = useState(false)
 
     useEffect(() => {
@@ -14,8 +14,9 @@ export default function STC() {
         window.addEventListener('scroll', handleWindowScroll)
         return () => window.removeEventListener('scroll', handleWindowScroll)
     }, [])
+
     const handleScrollTop = () => {
-        window.scrollTo({ top: 0 })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
     const handleScrollToComment = () => {
         document.getElementById('comment').scrollIntoView()
