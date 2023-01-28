@@ -55,7 +55,6 @@ export interface FrontMatter {
 }
 
 export interface EnhancedFrontMatter extends FrontMatter {
-    readingMinutes: number;
     fileName: string;
 }
 
@@ -138,7 +137,6 @@ export async function getFileBySlug(type: string, slug: string): Promise<FileByS
         mdxSource: code,
         toc,
         frontMatter: {
-            readingMinutes: readingTime(code).minutes,
             fileName: fs.existsSync(mdxPath) ? `${slug}.mdx` : `${slug}.md`,
             ...(frontmatter as FrontMatter),
             date: new Date(frontmatter.date).toISOString(),
