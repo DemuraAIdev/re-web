@@ -21,7 +21,9 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
     const allPosts = await getAllFilesFrontMatter('blog')
     const post = await getFileBySlug("blog", params?.slug as string);
     const rss = generateRss(allPosts)
-    fs.writeFileSync(`./public/feed.xml`, rss)
+    if (allPosts.length > 0) {
+        fs.writeFileSync(`./public/feed.xml`, rss)
+    }
 
     return { props: { post } };
 
@@ -34,7 +36,7 @@ export default function Blog({ post }: InferGetStaticPropsType<typeof getStaticP
         <>
             {!frontMatter.draft ? (
                 <MDXLayoutRenderer
-                    layout={frontMatter.layout || DEFAULT_LAYOUT}
+                    layout={DEFAULT_LAYOUT}
                     toc={toc}
                     mdxSource={mdxSource}
                     frontMatter={frontMatter}
