@@ -98,7 +98,7 @@ export async function getFileBySlug(type: string, slug: string): Promise<FileByS
         source,
         // mdx imports can be automatically source from the components directory
         cwd: path.join(process.cwd(), "components"),
-        mdxOptions(options) {
+        mdxOptions(options: { remarkPlugins: any; rehypePlugins: any[] }) {
             // this is the recommended way to add custom remark/rehype plugins:
             // The syntax might look weird, but it protects you in case we add/remove
             // plugins in the future.
@@ -123,7 +123,7 @@ export async function getFileBySlug(type: string, slug: string): Promise<FileByS
             ];
             return options;
         },
-        esbuildOptions: (options) => {
+        esbuildOptions: (options: { loader: any }) => {
             options.loader = {
                 ...options.loader,
                 ".js": "jsx",
