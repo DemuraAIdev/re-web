@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Link from './CustomLink'
-import headerNavLinks from '@/config/NavLinks'
+import { headerNavLinks } from '@/config/NavLinks'
 
 export default function Nav() {
     const [navShow, setNavShow] = useState(false)
