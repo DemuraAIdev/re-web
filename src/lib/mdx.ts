@@ -67,7 +67,7 @@ type FileBySlug = {
 
 
 
-export async function getFileBySlug(type: string, slug: string): Promise<FileBySlug> {
+export async function getFileBySlug(type: 'authors' | 'blog', slug: string): Promise<FileBySlug> {
     const mdxPath = path.join(root, "src", "data", type, `${slug}.mdx`);
     const mdPath = path.join(root, "src", "data", type, `${slug}.md`);
     const source = fs.existsSync(mdxPath)
@@ -140,7 +140,8 @@ export async function getFileBySlug(type: string, slug: string): Promise<FileByS
             fileName: fs.existsSync(mdxPath) ? `${slug}.mdx` : `${slug}.md`,
             ...(frontmatter as FrontMatter),
             date: new Date(frontmatter.date).toISOString(),
-            slug,
+            readingTime: readingTime(code).minutes,
+            slug: slug,
         },
     };
 }

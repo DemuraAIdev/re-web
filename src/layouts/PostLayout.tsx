@@ -9,12 +9,6 @@ import { EnhancedFrontMatter } from "@/lib/mdx";
 import Container from "@/components/Container";
 import Comment from "@/components/Comments"
 
-const postDateTemplate = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-};
 
 const editUrl = (fileName: string) => `https://github.com/DemuraAIdev/re-web/blob/master/data/blog/${fileName}`;
 const discussUrl = (slug: string) =>
