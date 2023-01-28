@@ -11,6 +11,7 @@ export const MDXComponents: ComponentMap = {
     Image,
     // @ts-expect-error
     a: Link,
+    // @ts-expect-error
     pre: Pre,
     wrapper: PostLayout,
 };
