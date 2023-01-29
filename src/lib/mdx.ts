@@ -56,11 +56,6 @@ export type FrontMatter = {
     readingTime: number
 }
 
-export interface EnhancedFrontMatter extends FrontMatter {
-    fileName: string;
-    readingTime: number;
-}
-
 type Toc = {
     value: string
     depth: number

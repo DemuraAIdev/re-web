@@ -1,11 +1,5 @@
 import Link from 'next/link'
-import { DetailedHTMLProps, AnchorHTMLAttributes } from 'react';
-
-export interface CustomLinkType extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
-    href: string;
-    showIcon?: boolean;
-    [key: string]: unknown
-}
+import { CustomLinkType } from '@/types/Component';
 
 export default function CustomLink({ href, children, className, showIcon = true }: CustomLinkType) {
     const isInternalLink = href && href.startsWith('/')

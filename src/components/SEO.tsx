@@ -1,20 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import type { FrontMatter } from "@/lib/mdx";
+import { CommonSEOProps, SEOProps } from "@/types/SEO";
 
-interface CommonSEOProps {
-    title: string
-    description: string
-    ogType: string
-    ogImage:
-    | string
-    | {
-        '@type': string
-        url: string
-    }[]
-    twImage: string
-    canonicalUrl?: string
-}
 const CommonSEO = ({
     title,
     description,
@@ -51,10 +39,8 @@ const CommonSEO = ({
         </Head>
     )
 }
-interface SEOProps {
-    title: string;
-    description: string;
-}
+
+
 export const PageSEO = ({ title, description }: SEOProps) => {
     const ogImageUrl = "https://vahryiskandar.my.id/static/images/twitter-card.png";
     const twImageUrl = "https://vahryiskandar.my.id/static/images/twitter-card.png";

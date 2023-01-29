@@ -1,19 +1,7 @@
 import { Conta } from "@/types";
+import { TOCInlineProps } from "@/types/Component";
 
-export type TocHeading = {
-    value: string;
-    depth: number;
-    url: string;
-};
 
-interface TOCInlineProps extends Conta {
-    toc: TocHeading[];
-    indentDepth?: number;
-    fromHeading?: number;
-    toHeading?: number;
-    asDisclosure?: boolean;
-    exclude?: string | string[];
-}
 
 /**
  * Generates an inline table of contents

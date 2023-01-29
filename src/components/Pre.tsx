@@ -1,10 +1,7 @@
 import { useState, useRef, ReactNode } from 'react'
+import { Conta } from '@/types';
 
-interface Props {
-    children: ReactNode
-}
-
-const Pre = ({ children }: Props) => {
+const Pre = ({ children }: Conta) => {
     const textInput = useRef<HTMLDivElement>(null);
     const [hovered, setHovered] = useState(false)
     const [copied, setCopied] = useState(false)
