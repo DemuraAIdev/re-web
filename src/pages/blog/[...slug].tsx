@@ -1,50 +1,81 @@
-import PageTitle from "@/components/PageTitle";
-import generateRss from "@/lib/generate-rss";
-import fs from "fs";
-import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from "@/lib/mdx";
-import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { MDXLayoutRenderer } from "@/components/MDXCompo";
+import fs from 'fs'
+import PageTitle from '@/components/PageTitle'
+import generateRss from '@/lib/generate-rss'
+import { MDXLayoutRenderer } from '@/components/MDXCompo'
+import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { FrontMatter } from "@/lib/mdx";
+
+const DEFAULT_LAYOUT = 'PostLayout'
+
+type Toc = {
+    value: string
+    depth: number
+    url: string
+}[]
 
 export async function getStaticPaths() {
-    const posts = getFiles("blog");
+    const posts = getFiles('blog')
     return {
         paths: posts.map((p) => ({
             params: {
-                slug: formatSlug(p).split("/"),
+                slug: formatSlug(p).split('/'),
             },
         })),
         fallback: false,
-    };
+    }
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext) {
+// @ts-ignore
+export const getStaticProps: GetStaticProps<{
+    post: { mdxSource: string; toc: Toc; frontMatter: FrontMatter }
+    prev?: { slug: string; title: string }
+    next?: { slug: string; title: string }
+}> = async ({ params }) => {
+    const slug = (params.slug as string[]).join('/')
     const allPosts = await getAllFilesFrontMatter('blog')
-    const post = await getFileBySlug("blog", params?.slug as string);
-    const rss = generateRss(allPosts)
+    const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === slug)
+    const prev: { slug: string; title: string } = allPosts[postIndex + 1] || null
+    const next: { slug: string; title: string } = allPosts[postIndex - 1] || null
+    const post = await getFileBySlug<FrontMatter>('blog', slug)
+
+    // rss
     if (allPosts.length > 0) {
-        fs.writeFileSync(`./public/feed.xml`, rss)
+        const rss = generateRss(allPosts)
+        fs.writeFileSync('./public/feed.xml', rss)
     }
 
-    return { props: { post } };
-
+    return {
+        props: {
+            post,
+            prev,
+            next,
+        },
+    }
 }
-const DEFAULT_LAYOUT = "PostLayout";
 
-export default function Blog({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
-    const { mdxSource, toc, frontMatter } = post;
+export default function Blog({
+    post,
+    prev,
+    next,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+    const { mdxSource, toc, frontMatter } = post
+
     return (
         <>
-            {!frontMatter.draft ? (
+            {'draft' in frontMatter && frontMatter.draft !== true ? (
                 <MDXLayoutRenderer
-                    layout={DEFAULT_LAYOUT}
+                    layout={frontMatter.layout || DEFAULT_LAYOUT}
                     toc={toc}
                     mdxSource={mdxSource}
                     frontMatter={frontMatter}
+                    prev={prev}
+                    next={next}
                 />
             ) : (
                 <div className="mt-24 text-center">
                     <PageTitle>
-                        Under Construction{" "}
+                        Under Construction{' '}
                         <span role="img" aria-label="roadwork sign">
                             🚧
                         </span>
@@ -52,5 +83,5 @@ export default function Blog({ post }: InferGetStaticPropsType<typeof getStaticP
                 </div>
             )}
         </>
-    );
+    )
 }

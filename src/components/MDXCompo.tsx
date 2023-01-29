@@ -1,31 +1,34 @@
-import Image from "next/image";
-import { getMDXComponent, ComponentMap } from "mdx-bundler/client";
-import Link from "./CustomLink";
-import TOCInline from "./TOCInline";
-import Pre from "./Pre";
-import PostLayout from "@/layouts/PostLayout";
-import { useMemo } from "react";
+import React, { useMemo } from 'react'
+import { ComponentMap, getMDXComponent } from 'mdx-bundler/client'
+import Image from './Image'
+import CustomLink from './CustomLink'
+import TOCInline from './TOCInline'
+import Pre from './Pre'
+// import { BlogNewsletterForm } from './NewsletterForm'
+
+const Wrapper: React.ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
+    const Layout = require(`../layouts/${layout}`).default
+    return <Layout {...rest} />
+}
 
 export const MDXComponents: ComponentMap = {
-    TOCInline,
     Image,
-    // @ts-expect-error
-    a: Link,
-    // @ts-expect-error
+    //@ts-ignore
+    TOCInline,
+    //@ts-ignore
+    a: CustomLink,
     pre: Pre,
-    wrapper: PostLayout,
-};
+    wrapper: Wrapper,
+}
 
-export const MDXLayoutRenderer = ({
-    layout,
-    mdxSource,
-    ...rest
-}: {
-    layout: any;
-    mdxSource: string;
-    [key: string]: any;
-}) => {
-    const MDXLayout = useMemo(() => getMDXComponent(mdxSource), [mdxSource]);
+interface Props {
+    layout: string
+    mdxSource: string
+    [key: string]: unknown
+}
 
-    return <MDXLayout layout={layout} components={MDXComponents} {...rest} />;
-};
+export const MDXLayoutRenderer = ({ layout, mdxSource, ...rest }: Props) => {
+    const MDXLayout = useMemo(() => getMDXComponent(mdxSource), [mdxSource])
+
+    return <MDXLayout layout={layout} components={MDXComponents} {...rest} />
+}

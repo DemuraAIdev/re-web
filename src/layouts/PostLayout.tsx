@@ -1,14 +1,13 @@
 import Link from "@/components/CustomLink";
 import PageTitle from '@/components/PageTitle'
 import { BlogSEO } from "@/components/SEO";
-import Image from "next/image";
 import Tag from '@/components/Tag'
 import ScrollTopAndComment from '@/components/STC.jsx'
-import { Conta } from "@/types";
-import { EnhancedFrontMatter } from "@/lib/mdx";
+import { ReactNode } from 'react'
+import { FrontMatter } from "@/lib/mdx";
 import Container from "@/components/Container";
 import Comment from "@/components/Comments"
-
+import Image from "@/components/Image";
 
 const editUrl = (fileName: string) => `https://github.com/DemuraAIdev/re-web/blob/master/data/blog/${fileName}`;
 const discussUrl = (slug: string) =>
@@ -16,18 +15,29 @@ const discussUrl = (slug: string) =>
         `https://vahryiskandar.my.id/blog/${slug}`
     )}`;
 
-
-
-interface PostLayoutProps extends Conta {
-    frontMatter: EnhancedFrontMatter;
+const postDateTemplate: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
 }
 
-export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
-    const { slug, fileName, date, title, images, tags, readingTime } = frontMatter;
+interface Props {
+    frontMatter: FrontMatter
+    next?: { slug: string; title: string }
+    prev?: { slug: string; title: string }
+    children: ReactNode
+}
+
+export default function PostLayout({ frontMatter, next, prev, children }: Props) {
+    const { slug, fileName, date, title, tags, readingTime } = frontMatter;
     const roundedReadingMinutes = Math.round(readingTime);
     return (
         <Container>
-            <BlogSEO {...frontMatter} url={`http://vahryiskandar.my.id/blog/${slug}`} />
+            <BlogSEO
+                url={`https://vahryiskandar.my.id/blog/${slug}`}
+                {...frontMatter}
+            />
             <ScrollTopAndComment />
             <article>
                 <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
@@ -40,12 +50,7 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                                         <time dateTime={date}>
                                             {new Date(date).toLocaleDateString(
                                                 "en-US",
-                                                {
-                                                    weekday: "long",
-                                                    year: "numeric",
-                                                    month: "long",
-                                                    day: "numeric",
-                                                }
+                                                postDateTemplate
                                             )}
                                         </time>
                                     </dd>
@@ -56,7 +61,7 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                             </div>
                             <span className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
                                 {roundedReadingMinutes}{" "}
-                                {roundedReadingMinutes == 1 ? " minute " : " minutes " + " read - "}
+                                {roundedReadingMinutes == 1 ? " minute " : " minutes " + " read"}
                             </span>
                         </div>
                     </header>
@@ -82,12 +87,10 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                             <dt className="sr-only">Authors</dt>
                             <dd>
                                 <ul className="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
-
                                     <li
                                         className="flex items-center space-x-2"
-                                        key={"Abdul Vaiz"}
+                                        key={"vahryiskandar"}
                                     >
-
                                         <Image
                                             src={"/static/images/avatar.jpg"}
                                             width="38"
@@ -98,7 +101,7 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                                         <dl className="whitespace-nowrap text-sm font-medium leading-5">
                                             <dt className="sr-only">Name</dt>
                                             <dd className="text-gray-900 dark:text-gray-100">
-                                                Abdul Vaiz
+                                                Vahry Iskandar
                                             </dd>
                                             <dt className="sr-only">Twitter</dt>
                                             <dd>
@@ -107,6 +110,7 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                                                     className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                                                 >
                                                     @Abdulvaiz2
+
                                                 </Link>
                                             </dd>
                                         </dl>
@@ -136,6 +140,6 @@ export default function PostLayout({ children, frontMatter }: PostLayoutProps) {
                     </footer>
                 </div>
             </article>
-        </Container >
+        </Container>
     )
 }

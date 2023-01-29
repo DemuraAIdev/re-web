@@ -1,16 +1,17 @@
-import { visit } from "unist-util-visit";
-import GitHubSlugger from "github-slugger";
-import { toString } from "hast-util-to-string";
-import { Pluggable } from "unified";
+//@ts-nocheck
+import { Parent } from 'unist'
+import { visit } from 'unist-util-visit'
+import { slug } from 'github-slugger'
+import { toString } from 'mdast-util-to-string'
 
-export default function remarkTocHeadings(options: any): Pluggable {
-    return (tree: any) =>
-        visit(tree, "heading", (node) => {
-            const textContent = toString(node);
+export default function remarkTocHeadings(options) {
+    return (tree: Parent) =>
+        visit(tree, 'heading', (node) => {
+            const textContent = toString(node)
             options.exportRef.push({
                 value: textContent,
-                url: "#" + GitHubSlugger.slug(textContent),
-                depth: (node as any).depth,
-            });
-        });
+                url: '#' + slug(textContent),
+                depth: node.depth,
+            })
+        })
 }

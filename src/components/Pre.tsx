@@ -1,26 +1,29 @@
-import { Conta } from "@/types";
-import { useState, useRef } from "react";
+import { useState, useRef, ReactNode } from 'react'
 
-export default function Pre({ children }: Conta) {
-    const textInput = useRef<HTMLDivElement>(null);
-    const [hovered, setHovered] = useState(false);
-    const [copied, setCopied] = useState(false);
+interface Props {
+    children: ReactNode
+}
+
+const Pre = ({ children }: Props) => {
+    const textInput = useRef(null)
+    const [hovered, setHovered] = useState(false)
+    const [copied, setCopied] = useState(false)
+
     const onEnter = () => {
-        setHovered(true);
-    };
+        setHovered(true)
+    }
     const onExit = () => {
-        setHovered(false);
-        setCopied(false);
-    };
+        setHovered(false)
+        setCopied(false)
+    }
     const onCopy = () => {
-        if (textInput.current?.textContent) {
-            setCopied(true);
-            navigator.clipboard.writeText(textInput.current.textContent);
-            setTimeout(() => {
-                setCopied(false);
-            }, 2000);
-        }
-    };
+        setCopied(true)
+        navigator.clipboard.writeText(textInput.current.textContent)
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
+    }
+
     return (
         <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
             {hovered && (
@@ -65,5 +68,7 @@ export default function Pre({ children }: Conta) {
 
             <pre>{children}</pre>
         </div>
-    );
+    )
 }
+
+export default Pre
