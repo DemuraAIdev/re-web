@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<{
     post: { mdxSource: string; toc: Toc; frontMatter: FrontMatter }
     prev?: { slug: string; title: string }
     next?: { slug: string; title: string }
-}> = async ({ params }) => {
+}> = async ({ params }: { params: { slug: string[] } }) => {
     const slug = (params.slug as string[]).join('/')
     const allPosts = await getAllFilesFrontMatter('blog')
     const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === slug)
