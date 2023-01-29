@@ -137,7 +137,7 @@ export async function getFileBySlug<T>(type: 'authors' | 'blog', slug: string | 
 
 
 export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatter[]> {
-    const prefixPaths = path.join(root, "data", folder);
+    const prefixPaths = path.join(root, "src", "data", folder);
 
     const files = getAllFilesRecursively(prefixPaths);
 
