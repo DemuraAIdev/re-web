@@ -55,8 +55,8 @@ export const PageSEO = ({ title, description }: SEOProps) => {
     );
 };
 export const TagSEO = ({ title, description }: SEOProps) => {
-    const ogImageUrl = "https://vahryiskandar.my.id/static/images/twitter-card.png";
-    const twImageUrl = "https://vahryiskandar.my.id/static/images/twitter-card.png";
+    const ogImageUrl = "/static/images/twitter-card.png";
+    const twImageUrl = "/static/images/twitter-card.png";
     const router = useRouter();
     return (
         <>
