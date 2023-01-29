@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Pre = ({ children }: Props) => {
-    const textInput = useRef(null)
+    const textInput = useRef<HTMLDivElement>(null);
     const [hovered, setHovered] = useState(false)
     const [copied, setCopied] = useState(false)
 
@@ -17,12 +17,14 @@ const Pre = ({ children }: Props) => {
         setCopied(false)
     }
     const onCopy = () => {
-        setCopied(true)
-        navigator.clipboard.writeText(textInput.current.textContent)
-        setTimeout(() => {
-            setCopied(false)
-        }, 2000)
-    }
+        if (textInput.current?.textContent) {
+            setCopied(true);
+            navigator.clipboard.writeText(textInput.current.textContent);
+            setTimeout(() => {
+                setCopied(false);
+            }, 2000);
+        }
+    };
 
     return (
         <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
