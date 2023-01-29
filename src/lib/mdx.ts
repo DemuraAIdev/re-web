@@ -136,31 +136,26 @@ export async function getFileBySlug<T>(type: 'authors' | 'blog', slug: string | 
 
 
 
-export async function getAllFilesFrontMatter(folder: 'blog') {
-    const prefixPaths = path.join(root, "src", 'data', folder)
+export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatter[]> {
+    const prefixPaths = path.join(root, "data", folder);
 
-    const files = getAllFilesRecursively(prefixPaths)
+    const files = getAllFilesRecursively(prefixPaths);
 
-    const allFrontMatter: FrontMatter[] = []
+    const allFrontMatter: any[] = [];
 
-    files.forEach((file: string) => {
+    files.forEach((file) => {
         // Replace is needed to work on Windows
-        const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
+        const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, "/");
         // Remove Unexpected File
-        if (path.extname(fileName) !== '.md' && path.extname(fileName) !== '.mdx') {
-            return
+        if (path.extname(fileName) !== ".md" && path.extname(fileName) !== ".mdx") {
+            return;
         }
-        const source = fs.readFileSync(file, 'utf8')
-        const matterFile = matter(source)
-        const frontmatter = matterFile.data as FrontMatter
-        if ('draft' in frontmatter && frontmatter.draft !== true) {
-            allFrontMatter.push({
-                ...frontmatter,
-                slug: formatSlug(fileName),
-                date: frontmatter.date ? new Date(frontmatter.date).toISOString() : null,
-            })
+        const source = fs.readFileSync(file, "utf8");
+        const { data } = matter(source);
+        if (data.draft !== true) {
+            allFrontMatter.push({ ...data, slug: formatSlug(fileName) });
         }
-    })
+    });
 
-    return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
+    return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date));
 }
