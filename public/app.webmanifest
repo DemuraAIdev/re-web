@@ -1,6 +1,6 @@
 {
     "name": "Vahry Iskandar Website",
-    "short_name": "VahryIskandar",
+    "short_name": "AVVI",
     "icons": [
         {
             "src": "/static/favicon/android-chrome-192x192.png",
@@ -16,7 +16,7 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "/",
+    "start_url": "/?source=pwa",
     "display": "standalone",
     "orientation": "portrait"
 }
