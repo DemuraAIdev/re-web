@@ -2,8 +2,9 @@ import { useState } from 'react'
 import Link from './CustomLink'
 import { headerNavLinks } from '@/config/NavLinks'
 
-export default function Nav() {
+const MobileNav = () => {
     const [navShow, setNavShow] = useState(false)
+
     const onToggleNav = () => {
         setNavShow((status) => {
             if (status) {
@@ -15,6 +16,7 @@ export default function Nav() {
             return !status
         })
     }
+
     return (
         <div className="sm:hidden">
             <div>
@@ -67,9 +69,9 @@ export default function Nav() {
                             {headerNavLinks.map((link) => (
                                 <div key={link.title} className="px-12 py-4">
                                     <Link
+                                        onClick={onToggleNav}
                                         href={link.href}
                                         className="text-2xl font-bold tracking-widest text-gray-900 transition dark:text-gray-100 "
-                                        onClick={onToggleNav}
                                     >
                                         {link.title}
                                     </Link>
@@ -82,3 +84,5 @@ export default function Nav() {
         </div>
     )
 }
+
+export default MobileNav

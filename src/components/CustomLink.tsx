@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { CustomLinkType } from '@/types/Component';
 
-export default function CustomLink({ href, children, className, showIcon = true }: CustomLinkType) {
+export default function CustomLink({ href, children, className, showIcon = true, onClick }: CustomLinkType) {
     const isInternalLink = href && href.startsWith('/')
     const isAnchorLink = href && href.startsWith('#')
 
     if (isInternalLink || isAnchorLink) {
         return (
-            <Link className={className} href={href}>
+            <Link className={className} href={href} onClick={onClick}>
                 {children}
 
             </Link>
@@ -15,7 +15,7 @@ export default function CustomLink({ href, children, className, showIcon = true 
     }
 
     return (
-        <Link href={href} target="_blank" rel='noopener noreferrer' className={`items-center ${className ? className : ''}`} >
+        <Link href={href} target="_blank" rel='noopener noreferrer' className={`items-center ${className ? className : ''}`} onClick={onClick}>
             {children}
             {showIcon && (
                 <svg
