@@ -33,7 +33,6 @@ const handler = async (
     if (!session) {
         return res.status(401).send("Unauthenticated");
     }
-    //@ts-ignore
     const { user, id } = session;
     if (!user) {
         return res.status(403).send("Unauthorized");

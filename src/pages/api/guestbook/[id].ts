@@ -12,7 +12,6 @@ const guestbookEntries = async (
     if (!session?.user) {
         return res.status(401).send("Unauthenticated");
     }
-    //@ts-ignore
     const { user, id: userId } = session;
     const { id } = req.query;
 
@@ -44,7 +43,7 @@ const guestbookEntries = async (
                 id: Number(id),
             },
         });
-        return res.status(204).json({});
+        return res.status(202).json({});
     }
 
     if (req.method === "PUT") {
