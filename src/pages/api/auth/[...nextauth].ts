@@ -1,7 +1,11 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth, { NextAuthOptions, Session } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/lib/prisma"
+
+type CustomSession = Session & {
+    id: string;
+};
 
 export const authOptions: NextAuthOptions = {
     // Configure one or more authentication providers
@@ -18,8 +22,9 @@ export const authOptions: NextAuthOptions = {
     },
     callbacks: {
         async session({ session, user, token }) {
-            session.id = user.id;
-            return Promise.resolve(session);
+            const customSession = session as CustomSession;
+            customSession.id = user.id;
+            return Promise.resolve(customSession);
         },
     },
 }
