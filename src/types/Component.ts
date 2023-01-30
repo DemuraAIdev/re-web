@@ -21,3 +21,9 @@ export interface TOCInlineProps extends Conta {
     asDisclosure?: boolean;
     exclude?: string | string[];
 }
+export interface FallbackData {
+    id: string;
+    body: any;
+    created_by: string;
+    updated_at: string;
+}

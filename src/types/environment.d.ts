@@ -11,6 +11,10 @@ declare global {
             SPOTIFY_CLIENT_ID: string;
             SPOTIFY_CLIENT_SECRET: string;
             SPOTIFY_REFRESH_TOKEN: string;
+
+            AUTH_GITHUB_ID: string;
+            AUTH_GITHUB_SECRET: string;
+            NEXTAUTH_SECRET: string;
         }
     }
 }
