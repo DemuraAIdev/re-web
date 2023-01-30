@@ -41,7 +41,6 @@ function GuestbookEntry({ entry, currentUserId }: GuestbookEntryProps) {
                         ) : (
                             <PersonOut className="w-5 h-5 rounded-full fill-current text-primary-600 dark:text-primary-400" />
                         )}
-                        <p className="text-sm text-gray-500">{updated_at}</p>
                         <span className=" text-gray-200 dark:text-gray-800">/</span>
                         <p className="text-sm text-gray-400 dark:text-gray-600">
                             {format(new Date(updated_at), "d MMM yyyy 'at' h:mm bb")}
@@ -129,7 +128,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: GuestBookEnt
                             aria-label="Your message"
                             placeholder="Your message..."
                             required
-                            className="mt-1 block w-full rounded-md border-gray-300 bg-white py-2 pl-4 pr-32 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
+                            className="mt-1 block w-full h-44 rounded-md border-gray-300 bg-white py-2 pl-4 pr-32 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
                         />
                         <button
                             className="absolute right-1 top-1 flex h-8 w-28 items-center justify-center rounded bg-gray-100 px-4 pt-1 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"

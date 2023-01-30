@@ -4,10 +4,6 @@ import { GuestBookEntry } from "@/types/guestbook";
 import { getServerSessions } from "@/lib/getServerSession";
 import { Session } from "next-auth";
 
-type CustomSession = Session & {
-    id: string;
-};
-
 const handler = async (
     req: NextApiRequest,
     res: NextApiResponse<GuestBookEntry[] | string | GuestBookEntry>
@@ -37,7 +33,8 @@ const handler = async (
     if (!session) {
         return res.status(401).send("Unauthenticated");
     }
-    const { user, id } = session as CustomSession;
+    //@ts-ignore
+    const { user, id } = session;
     if (!user) {
         return res.status(403).send("Unauthorized");
     }
