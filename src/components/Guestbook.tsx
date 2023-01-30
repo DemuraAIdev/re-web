@@ -151,7 +151,8 @@ export default function Guestbook({ fallbackData }: { fallbackData: GuestBookEnt
             <div className="mt-4 space-y-8">
                 <Suspense fallback={null}>
                     {entries?.map((entry) => (
-                        <GuestbookEntry key={entry.id} entry={entry} currentUserId={session?.user?.email as string} />
+                        //@ts-ignore
+                        <GuestbookEntry key={entry.id} entry={entry} currentUserId={session?.id} />
                     ))}
                 </Suspense>
             </div>
