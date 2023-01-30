@@ -2,6 +2,11 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prisma";
 import { GuestBookEntry } from "@/types/guestbook";
 import { getServerSessions } from "@/lib/getServerSession";
+import { Session } from "next-auth";
+
+type CustomSession = Session & {
+    id: string;
+};
 
 const guestbookEntries = async (
     req: NextApiRequest,
@@ -11,7 +16,7 @@ const guestbookEntries = async (
     if (!session?.user) {
         return res.status(401).send("Unauthenticated");
     }
-    const { user, id: userId } = session;
+    const { user, id: userId } = session as CustomSession;
     const { id } = req.query;
 
     const entry = await prisma.guestbook.findUnique({

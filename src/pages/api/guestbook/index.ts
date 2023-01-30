@@ -2,6 +2,11 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prisma";
 import { GuestBookEntry } from "@/types/guestbook";
 import { getServerSessions } from "@/lib/getServerSession";
+import { Session } from "next-auth";
+
+type CustomSession = Session & {
+    id: string;
+};
 
 const handler = async (
     req: NextApiRequest,
@@ -32,8 +37,7 @@ const handler = async (
     if (!session) {
         return res.status(401).send("Unauthenticated");
     }
-
-    const { user, id } = session;
+    const { user, id } = session as CustomSession;
     if (!user) {
         return res.status(403).send("Unauthorized");
     }
