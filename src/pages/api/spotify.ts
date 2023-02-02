@@ -11,6 +11,10 @@ export interface NowPlayingSong {
 
 export default async function handler(_: NextApiRequest, res: NextApiResponse<NowPlayingSong>) {
     const response = await getNowPlaying()
+    if (response.status === 401) {
+        return res.status(200).json({ isPlaying: false, title: 'UnAuthorized', songUrl: 'https://open.spotify.com', artist: 'UnAuthorized' })
+    }
+
     if (response.status === 204 || response.status > 400) {
         return res.status(200).json({ isPlaying: false })
     }

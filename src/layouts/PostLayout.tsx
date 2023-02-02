@@ -126,7 +126,7 @@ export default function PostLayout({ frontMatter, next, prev, children }: Props)
                             <Link href={editUrl(fileName)}>{"View on GitHub"}</Link>
                         </div>
 
-                        <Comment frontMatter={frontMatter} />
+                        <Comment />
                     </div>
                     <footer>
                         <div className="pt-4 xl:pt-8">

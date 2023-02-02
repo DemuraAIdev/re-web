@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useTheme } from "next-themes";
+import { commentsTheme } from "@/config/comment"
 const Giscus = ({ mapping }: { mapping: string }) => {
     const [enableLoadComments, setEnabledLoadComments] = useState(true);
-    const { theme, resolvedTheme } = useTheme();
-    const commentsTheme = "transparent_dark"
 
     const COMMENTS_ID = "comments-container";
 
