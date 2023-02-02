@@ -6,39 +6,46 @@ export interface NowPlayingSong {
     artist?: string;
     songUrl?: string;
     title?: string;
+    albumImageUrl?: string;
+    album?: string;
 }
 
 
 export default async function handler(_: NextApiRequest, res: NextApiResponse<NowPlayingSong>) {
-    const response = await getNowPlaying()
+    const response = await getNowPlaying();
     if (response.status === 401) {
-        return res.status(200).json({ isPlaying: false, title: 'UnAuthorized', songUrl: 'https://open.spotify.com', artist: 'UnAuthorized' })
-    }
+        return res.status(200).json({ isPlaying: false, title: 'Spotify is not connected' });
+    } else
+        if (response.status === 204 || response.status > 400) {
+            return res.status(200).json({ isPlaying: false });
+        }
 
-    if (response.status === 204 || response.status > 400) {
-        return res.status(200).json({ isPlaying: false })
-    }
-    const nowPlaying = await response.json()
-    if (nowPlaying.currently_playing_type === 'track') {
-        // song
-        const isPlaying = nowPlaying.is_playing
-        const title = nowPlaying.item.name
-        const artist = nowPlaying.item.artists.map((_artist: { name: string }) => _artist.name).join(', ')
-        const songUrl = nowPlaying.item.external_urls.spotify
+    const song = await response.json();
 
-        res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30')
+    if (song.currently_playing_type === 'episode') {
         return res.status(200).json({
+            isPlaying: true,
+            title: 'Listening to a Podcast',
+            artist: 'Spotify',
+            songUrl: 'https://open.spotify.com/show/2Shpxw7dPoxRJCdfFXTWLE',
+        });
+    } else {
+        const isPlaying = song.is_playing;
+        const title = song.item?.name;
+        const artist = song.item?.artists.map((_artist: { name: any; }) => _artist.name).join(', ');
+        const album = song.item?.album.name;
+        const albumImageUrl = song.item?.album.images[0].url;
+        const songUrl = song.item?.external_urls.spotify;
+
+        console.log(song);
+
+        return res.status(200).json({
+            album,
+            albumImageUrl,
             artist,
             isPlaying,
             songUrl,
             title,
-        })
-    } else if (nowPlaying.currently_playing_type === 'episode') {
-        // podcast
-        return res.status(200).json({
-            isPlaying: nowPlaying.is_playing,
-            songUrl: 'https://open.spotify.com',
-            title: 'Podcast',
-        })
+        });
     }
 }
