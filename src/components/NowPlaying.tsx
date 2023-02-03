@@ -5,7 +5,7 @@ import useSWR from 'swr'
 
 
 export default function NowPlaying() {
-    const { data } = useSWR('/api/spotify', fetcher)
+    const { data } = useSWR('/api/spotify/now-playing', fetcher)
     return (
         <div className=" flex items-center gap-1 sm:gap-2">
             <svg className="h-5 w-5 flex-none" viewBox="0 0 168 168">
@@ -21,6 +21,7 @@ export default function NowPlaying() {
                         className="max-w-max truncate text-sm hover:text-spotify-green"
                         href={data.songUrl}
                         title={data.title}
+                        showIcon={false}
                     >
                         {data.title}
                     </Link>

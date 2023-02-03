@@ -37,8 +37,6 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse<No
         const albumImageUrl = song.item?.album.images[0].url;
         const songUrl = song.item?.external_urls.spotify;
 
-        console.log(song);
-
         return res.status(200).json({
             album,
             albumImageUrl,
