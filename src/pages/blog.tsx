@@ -3,7 +3,7 @@ import { getAllFilesFrontMatter } from "@/lib/mdx";
 import { InferGetStaticPropsType } from "next";
 import ListLayout from "@/layouts/ListLayout";
 
-export const POSTS_PER_PAGE = 5;
+const POSTS_PER_PAGE = 5;
 
 export async function getStaticProps({ }) {
     const posts = await getAllFilesFrontMatter("blog");

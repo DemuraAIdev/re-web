@@ -9,7 +9,9 @@
     "lint": "next lint",
     "prisma:generate": "pnpx prisma generate",
     "prisma:studio": "pnpx prisma studio",
-    "prisma:seed": "pnpx prisma db seed --preview-feature"
+    "prisma:seed": "pnpx prisma db seed --preview-feature",
+    "pscale:shadow": "pscale connect thvu-blog shadow --port 3310",
+    "pscale:main": "pscale connect webblog main --port 3309"
   },
   "dependencies": {
     "@mdx-js/mdx": "^2.2.1",

@@ -1,9 +1,9 @@
 import { PageSEO } from '@/components/SEO'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
-import { POSTS_PER_PAGE } from '../../blog'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { FrontMatter } from '@/lib/mdx'
+const POSTS_PER_PAGE = 5;
 
 export const getStaticPaths: GetStaticPaths<{ page: string }> = async () => {
     const totalPosts = await getAllFilesFrontMatter('blog')

@@ -41,6 +41,9 @@ function GuestbookEntry({ entry, currentUserId }: GuestbookEntryProps) {
                         ) : (
                             <PersonOut className="w-5 h-5 rounded-full fill-current text-primary-600 dark:text-primary-400" />
                         )}
+                        <p className="text-sm text-gray-500">
+                            {user.name}
+                        </p>
                         <span className=" text-gray-200 dark:text-gray-800">/</span>
                         <p className="text-sm text-gray-400 dark:text-gray-600">
                             {format(new Date(updated_at), "d MMM yyyy 'at' h:mm bb")}

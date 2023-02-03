@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prisma";
 import { GuestBookEntry } from "@/types/guestbook";
 import { getServerSessions } from "@/lib/getServerSession";
-import { Session } from "next-auth";
 
 const handler = async (
     req: NextApiRequest,
