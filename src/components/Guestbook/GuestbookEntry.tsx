@@ -22,7 +22,7 @@ export function GuestbookEntry({ entry, currentUserId }: GuestbookEntryProps) {
                 <LoadingSpinner />
             ) : (
                 <div className="flex flex-col space-y-2">
-                    <div className="prose w-full dark:prose-dark">{body}</div>
+                    <div className="prose w-full  dark:prose-dark">{body}</div>
                     <div className="flex items-center space-x-3">
                         {user.image ? (
                             <Image

@@ -122,7 +122,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: GuestBookEnt
     }
     return (
         <>
-            <div className="dark:bg-blue-opaque my-4 w-full rounded border border-blue-200 bg-blue-50 p-6 shadow-xl transition dark:border-gray-800 dark:bg-black dark:shadow-none">
+            <div className="dark:bg-blue-opaque my-4 w-full rounded border border-dotted border-blue-200 bg-blue-50 p-6 shadow-xl transition dark:border-gray-800 dark:bg-[#111010] dark:shadow-none">
                 <LoginBut message="Login to sign the guestbook." />
                 {Boolean(session?.user) && (
                     <form className="relative my-4" onSubmit={leaveEntry}>

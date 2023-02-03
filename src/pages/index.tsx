@@ -15,7 +15,7 @@ export default function Home({ posts }: { posts: FrontMatter[] }) {
   return (
     <>
       <PageSEO title="Vahry Iskandar" description="Home page of Abdul Vaiz Vahry Iskandar" />
-      <div className="space-y-2 pt-6 pb-8 md:space-y-5 md:h-screen lg:h-sreen md:lg:mt-20 lg:mt-20">
+      <div className="space-y-2 pt-5 pb-8 md:space-y-5 md:h-screen lg:h-sreen md:lg:mt-20 lg:mt-20">
         <div
           className="animate-text bg-gradient-to-r 
             from-[#6EE7B7] via-[#3B82F6]  to-[#9333EA]
@@ -27,17 +27,10 @@ export default function Home({ posts }: { posts: FrontMatter[] }) {
             Abdul Vaiz Vahry Iskandar
           </h1>
         </div>
-        <div>
+        <div className="border-dotted rounded-lg border-2 border-gray-500 p-5">
           <Typed />
           <p className="text-lg leading-7 text-black dark:text-gray-400">
             I am a website developer, bot, graphic designer, and nft artist. I learned to make a website from 2019
-
-            <Link
-              className=" bg-cust1 umami--home--navigation ml-2 font-medium leading-6"
-              href="/menu"
-            >
-              Navigation →
-            </Link>
           </p>
         </div>
       </div>
