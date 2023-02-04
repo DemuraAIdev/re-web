@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
     })
     const ContentSecurityPolicy = `
         default-src 'self';
-        script-src 'self' 'unsafe-eval' 'unsafe-inline' *.vahryiskandar.my.id *.giscus.app;
+        script-src 'self' 'unsafe-eval' 'unsafe-inline' *.vahryiskandar.my.id giscus.app;
         child-src  *.youtube.com *.google.com *.twitter.com giscus.app;
         style-src 'self' 'unsafe-inline' 'unsafe-eval';
         font-src 'self';
