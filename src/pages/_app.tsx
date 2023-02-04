@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
 import NavigationBar from '@/components/NavigationBar'
 import { SessionProvider } from "next-auth/react"
+import Analytics from '@/components/Analystic'
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
           <Head>
             <meta content="width=device-width, initial-scale=1" name="viewport" />
           </Head>
+          <Analytics />
           <NavigationBar>
             <Component {...pageProps} />
           </NavigationBar>
