@@ -22,7 +22,6 @@ export function middleware(request: NextRequest) {
     `
     response.headers.set('X-Next-Server', 'Next.js')
     response.headers.set('X-Frame-Options', 'DENY')
-    response.headers.set('Cache-Control', 'must-revalidate, max-age=3600')
     response.headers.set('Content-Security-Policy', ContentSecurityPolicy.replace(/\n/g, ""))
 
 
