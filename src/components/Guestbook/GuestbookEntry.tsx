@@ -21,8 +21,8 @@ export function GuestbookEntry({ entry, currentUserId }: GuestbookEntryProps) {
             {isDeleting ? (
                 <LoadingSpinner />
             ) : (
-                <div className="flex flex-col space-y-2">
-                    <div className="prose w-full  dark:prose-dark">{body}</div>
+                <div className="flex flex-col space-y-2 border border-gray-500 p-3">
+                    <div className="prose  dark:prose-dark">{body}</div>
                     <div className="flex items-center space-x-3">
                         {user.image ? (
                             <Image
@@ -38,7 +38,7 @@ export function GuestbookEntry({ entry, currentUserId }: GuestbookEntryProps) {
                         <p className="text-sm text-gray-500">{user.name}</p>
                         <span className=" text-gray-200 dark:text-gray-800">/</span>
                         <p className="text-sm text-gray-400 dark:text-gray-600">
-                            {format(new Date(updated_at), "d MMM yyyy 'at' h:mm bb")}
+                            {format(new Date(updated_at), "d MMM yyyy")}
                         </p>
                         {currentUserId === user.id && (
                             <>
