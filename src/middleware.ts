@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
         default-src 'self';
         script-src 'self' 'unsafe-eval' 'unsafe-inline' *.vahryiskandar.my.id;
         child-src  *.youtube.com *.google.com *.twitter.com giscus.app;
-        style-src 'self';
+        style-src 'self' 'unsafe-inline' 'unsafe-eval';
         font-src 'self';
         img-src 'self' data: *.vahryiskandar.my.id *.google.com *.githubusercontent.com *.github.com *.giscus.app;
         worker-src 'self' *.youtube.com *.google.com *.twitter.com;
