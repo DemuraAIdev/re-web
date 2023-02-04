@@ -17,6 +17,8 @@ export function middleware(request: NextRequest) {
         style-src 'self';
         font-src 'self';
         img-src 'self' data: *.vahryiskandar.my.id *.google.com *.githubusercontent.com *.github.com *.giscus.app;
+        worker-src 'self' *.youtube.com *.google.com *.twitter.com;
+        connect-src *;
     `
     response.headers.set('X-Next-Server', 'Next.js')
     response.headers.set('X-Frame-Options', 'DENY')
