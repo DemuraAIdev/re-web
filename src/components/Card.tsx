@@ -10,7 +10,7 @@ interface CardProp {
 
 const Card = ({ title, description, imgSrc, href }: CardProp) => (
     <div className="md p-4 md:w-1/2" style={{ maxWidth: "544px" }}>
-        <div className="flex h-full flex-col justify-between rounded-lg border-dotted border-2 border-gray-500 p-5 bg-[#F9F6EE] transition-colors duration-1000 dark:bg-[#111010] ">
+        <div className="flex h-full flex-col justify-between rounded-lg border-dotted border-2 border-gray-500 p-5 bg-[#F9F6EE] transition-colors duration-1000 dark:bg-[#111010] hover:scale-[1.03]">
             {imgSrc &&
                 (href ? (
                     <Link href={href} aria-label={`Link to ${title}`} showIcon={false}>
