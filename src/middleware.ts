@@ -15,7 +15,8 @@ export function middleware(request: NextRequest) {
         script-src 'self' 'unsafe-eval' 'unsafe-inline' *.vahryiskandar.my.id;
         child-src  *.youtube.com *.google.com *.twitter.com giscus.app;
         style-src 'self';
-        font-src 'self';  
+        font-src 'self';
+        img-src 'self' data: *.vahryiskandar.my.id *.google.com *.githubusercontent.com *.github.com *.giscus.app;
     `
     response.headers.set('X-Next-Server', 'Next.js')
     response.headers.set('X-Frame-Options', 'DENY')

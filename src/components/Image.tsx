@@ -6,7 +6,7 @@ const Image = ({ ...rest }: ImageProps) => {
 
         <div className="relative">
             {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex">
                     <svg
                         className="animate-spin h-5 w-5 text-gray-400"
                         xmlns="http://www.w3.org/2000/svg"
