@@ -15,6 +15,9 @@ declare global {
             AUTH_GITHUB_ID: string;
             AUTH_GITHUB_SECRET: string;
             NEXTAUTH_SECRET: string;
+
+            UMAMI_EMAIL: string;
+            UMAMI_PASSWORD: string;
         }
     }
 }
