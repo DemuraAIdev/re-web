@@ -7,9 +7,11 @@ import type { FrontMatter } from '@/lib/mdx';
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter("blog");
-
+  console.log("%cStop! want code?", "color: red; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;");
+  console.log("https://github.com/DemuraAIdev")
   return { props: { posts } };
 }
+
 
 export default function Home({ posts }: { posts: FrontMatter[] }) {
   return (
