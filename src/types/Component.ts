@@ -27,3 +27,15 @@ export interface FallbackData {
     created_by: string;
     updated_at: string;
 }
+
+export type AuthorFrontMatter = {
+    layout?: string
+    name: string
+    avatar: string
+    occupation: string
+    company: string
+    email: string
+    twitter: string
+    linkedin: string
+    github: string
+}
