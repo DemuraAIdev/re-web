@@ -13,7 +13,6 @@
     "pscale:shadow": "pscale connect thvu-blog shadow --port 3310",
     "pscale:main": "pscale connect webblog main --port 3309"
   },
-  "type": "module",
   "dependencies": {
     "@mdx-js/mdx": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
