@@ -13,6 +13,7 @@
     "pscale:shadow": "pscale connect thvu-blog shadow --port 3310",
     "pscale:main": "pscale connect webblog main --port 3309"
   },
+  "type": "module",
   "dependencies": {
     "@mdx-js/mdx": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
@@ -68,6 +69,7 @@
     "autoprefixer": "^10.4.13",
     "install": "^0.13.0",
     "postcss": "^8.4.21",
+    "prettier": "2.8.3",
     "prisma": "^4.9.0",
     "tailwindcss": "^3.2.4"
   }

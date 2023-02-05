@@ -2,7 +2,7 @@ const fs = require('fs')
 const globby = require('globby')
 const matter = require('gray-matter')
 const prettier = require('prettier')
-    (async () => {
+    ; (async () => {
         const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
         const pages = await globby([
             'src/pages/*.js',
