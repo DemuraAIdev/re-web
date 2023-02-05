@@ -22,6 +22,8 @@ const CommonSEO = ({
             <meta property="og:site_name" content="Vahry Iskandar" />
             <meta property="og:description" content={description} />
             <meta property="og:title" content={title} />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:image:alt" content={title} />
             {Array.isArray(ogImage) ? (
                 ogImage.map(({ url }) => <meta property="og:image" content={url} key={url} />)
             ) : (
@@ -31,6 +33,7 @@ const CommonSEO = ({
             <meta name="twitter:site" content={"https://vahryiskandar.my.id"} />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
+            <meta property="og:updated_time" content="1440432930" />
             <meta name="twitter:image" content={twImage} />
             <link
                 rel="canonical"
