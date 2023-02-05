@@ -1,9 +1,7 @@
 // Icons taken from: https://simpleicons.org/
 import Mail from "./mail.svg";
 import Github from "./github.svg";
-import Linkedin from "./linkedin.svg";
 import Twitter from "./twitter.svg";
-import Codepen from "./codepen.svg";
 import Link from "next/link";
 
 interface ComponentProps {
@@ -12,9 +10,7 @@ interface ComponentProps {
 const components: { [kind: string]: any } = {
     mail: Mail,
     github: Github,
-    linkedin: Linkedin,
     twitter: Twitter,
-    codepen: Codepen,
 };
 
 interface Props {

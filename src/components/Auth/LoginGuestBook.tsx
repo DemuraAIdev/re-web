@@ -39,7 +39,7 @@ export default function GuestbookEntry({ message }: { message: string }) {
             ) : (
                 // eslint-disable-next-line @next/next/no-html-link-for-pages
                 <button
-                    className="my-4 flex h-8 w-28 items-center justify-center rounded bg-gray-200 font-bold text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+                    className="my-4 flex h-8 w-28 items-center justify-center rounded bg-gray-200 font-bold text-gray-900 dark:bg-gray-700 dark:text-gray-100 umami--click--signin-button"
                     onClick={onSignIn}
                 >
                     {isLoading ? <LoadingSpinner /> : 'Login'}
