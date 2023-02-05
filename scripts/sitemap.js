@@ -2,9 +2,7 @@ const fs = require('fs')
 const globby = require('globby')
 const matter = require('gray-matter')
 const prettier = require('prettier')
-const siteMetadata = require('../data/siteMetadata')
-
-    ; (async () => {
+    (async () => {
         const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
         const pages = await globby([
             'src/pages/*.js',
@@ -48,7 +46,7 @@ const siteMetadata = require('../data/siteMetadata')
                     }
                     return `
                         <url>
-                            <loc>${siteMetadata.siteUrl}${route}</loc>
+                            <loc>https://beta23.vahryiskandar.my.id${route}</loc>
                         </url>
                     `
                 })

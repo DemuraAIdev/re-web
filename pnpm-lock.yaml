@@ -22,6 +22,7 @@ specifiers:
   eslint: 8.32.0
   eslint-config-next: 13.1.5
   github-slugger: 1.3.0
+  globby: ^13.1.3
   gray-matter: ^4.0.3
   hast-util-to-string: ^2.0.0
   image-size: ^1.0.2
@@ -71,6 +72,7 @@ dependencies:
   eslint: 8.32.0
   eslint-config-next: 13.1.5_7uibuqfxkfaozanbtbziikiqje
   github-slugger: 1.3.0
+  globby: 13.1.3
   gray-matter: 4.0.3
   hast-util-to-string: 2.0.0
   image-size: 1.0.2
