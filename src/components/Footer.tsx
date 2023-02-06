@@ -1,6 +1,6 @@
 import Link from './CustomLink'
 import NowPlaying from './NowPlaying'
-import { OtherLinks, headerNavLinks } from '@/config/NavLinks'
+import { OtherLinks, headerNavLinks, ExternalLinks } from '@/config/NavLinks'
 
 export default function Footer() {
     return (
@@ -24,7 +24,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col space-y-4">
                     <p className='font-bold'>Other</p>
-                    {headerNavLinks.map((link) => (
+                    {OtherLinks.map((link) => (
                         <Link
                             key={link.title}
                             href={link.href}
@@ -36,7 +36,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col space-y-4">
                     <p className='font-bold'>External</p>
-                    {OtherLinks.map((link) => (
+                    {ExternalLinks.map((link) => (
                         <Link
                             key={link.title}
                             href={link.href}
@@ -54,7 +54,7 @@ export default function Footer() {
                 <div>{` • `}</div>
                 <Link href="/">Vahry Iskandar</Link>
                 <span className="black ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none dark:bg-zinc-800 dark:text-zinc-400">
-                    5.0
+                    5.9
                 </span>
             </div>
         </footer>
