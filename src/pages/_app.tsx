@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import '@/styles/prism.css'
-import '@/styles/NProgress.css'
+import '@/styles/Nprogress.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
