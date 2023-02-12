@@ -7,6 +7,7 @@ import MobileNav from './SmNav';
 import SwitchDark from './DarkSwitch';
 import Footer from './Footer';
 
+
 export default function NavigationBar({ children }: Conta) {
     return (
         <div className="z-50 flex h-screen flex-col justify-between">
