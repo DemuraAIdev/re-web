@@ -7,7 +7,7 @@ const withPWA = require('next-pwa')({
 const nextConfig = withPWA({
   reactStrictMode: true,
   images: {
-    domains: ['avatars.githubusercontent.com', "count.getloli.com"],
+    domains: ['avatars.githubusercontent.com', "count.getloli.com", 'a.ppy.sh'],
   },
   webpack: (config) => {
     config.module.rules.push({
