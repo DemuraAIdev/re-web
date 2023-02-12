@@ -30,6 +30,7 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
         length = 10
     }
     // @ts-ignore
+    console.log("data: ", data)
     const renderSvg = getCountImage({ count: data.number, theme, length })
 
     // send response image
@@ -38,9 +39,9 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
 }
 
 async function getCountByName(name: string) {
-    const defaultCount = { name, num: 0 }
+    const defaultCount = { name, number: 0 }
 
-    if (name === 'demo') return { name, num: '0123456789' }
+    if (name === 'demo') return { name, number: '0123456789' }
 
     try {
         const counter = await getNum(name) || defaultCount

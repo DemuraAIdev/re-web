@@ -8,11 +8,45 @@ images: ["/static/theme/rule34/1.gif"]
 canonicalUrl: chat-gpt-intro
 ---
 # How to make like this
+![Count](/api/counter/@blog?theme=rule34)
 
-```javascript
-var num1, num2, sum
-num1 = prompt('Enter first number')
-num2 = prompt('Enter second number')
-sum = parseInt(num1) + parseInt(num2) // "+" means "add"
-alert('Sum = ' + sum) // "+" means combine into a string
+just add this to your markdown html or svg
+```js:index.html
+<img src="https://count.getloli.com/get/@:name" alt=":name" />
 ```
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20">
+  <foreignObject width="100%" height="100%">
+    <img src="https://count.getloli.com/get/@:name" alt=":name" />
+  </foreignObject>
+</svg>
+```
+```md
+![Count](https://count.getloli.com/get/@:name)
+```
+Just replace `:name` with your name
+
+# theme
+You can change theme by add `theme` query
+```html
+<img src="https://count.getloli.com/get/@:name?theme=rule34" alt=":name" />
+```
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20">
+  <foreignObject width="100%" height="100%">
+    <img src="https://count.getloli.com/get/@:name?theme=rule34" alt=":name" />
+  </foreignObject>
+</svg>
+```
+```md
+![Count](https://count.getloli.com/get/@:name?theme=rule34)
+```
+## theme list
+- rule34
+- asoul
+- moebooru
+- gelbooru
+
+## Credit 
+- [getloli](https://getloli.com)
+
