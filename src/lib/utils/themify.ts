@@ -5,7 +5,7 @@ import mimeType from 'mime-types';
 
 const root = process.cwd()
 
-const themePath = path.resolve(root, 'src', 'lib', 'utils', 'theme');
+const themePath = path.resolve(root, 'public', 'static', 'theme');
 const themeList: { [key: string]: { [key: string]: { width: number, height: number, data: string } } } = {}
 
 fs.readdirSync(themePath).forEach(theme => {
