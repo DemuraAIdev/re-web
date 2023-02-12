@@ -19,7 +19,6 @@ export async function getNum(name: string): Promise<{ name: string, number: numb
         });
         return newNum;
     }
-    console.log(num);
     return num;
 
 }

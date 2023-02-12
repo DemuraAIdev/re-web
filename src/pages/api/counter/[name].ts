@@ -44,7 +44,6 @@ async function getCountByName(name: string) {
 
     try {
         const counter = await getNum(name) || defaultCount
-        console.log("get count by name: ", counter)
         const num = counter.number + 1
         setNum(counter.name, num)
         return counter

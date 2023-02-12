@@ -7,9 +7,19 @@
       <language>en-US</language>
       <managingEditor>cyberaioff@gmail.com (Abdul Vaiz)</managingEditor>
       <webMaster>cyberaioff@gmail.com (Abdul Vaiz)</webMaster>
-      <lastBuildDate>Wed, 21 Dec 2022 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Sun, 12 Feb 2023 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://vahryiskandar.my.id/feed.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://vahryiskandar.my.id/blog/viewscounter</guid>
+    <title>Make views counter (Moe counter)</title>
+    <link>https://vahryiskandar.my.id/blog/viewscounter</link>
+    <description>How to make views counter like my bio</description>
+    <pubDate>Sun, 12 Feb 2023 00:00:00 GMT</pubDate>
+    <author>cyberaioff@gmail.com (Abdul Vaiz)</author>
+    <category>ai</category><category>openai</category>
+  </item>
+
   <item>
     <guid>https://vahryiskandar.my.id/blog/chatgpt</guid>
     <title>How Chat GPT is Changing the Game</title>
