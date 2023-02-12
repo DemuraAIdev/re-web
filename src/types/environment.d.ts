@@ -18,6 +18,9 @@ declare global {
 
             UMAMI_EMAIL: string;
             UMAMI_PASSWORD: string;
+
+            OSU_CLIENT_ID: string;
+            OSU_CLIENT_SECRET: string;
         }
     }
 }

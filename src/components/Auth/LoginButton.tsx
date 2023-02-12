@@ -1,5 +1,6 @@
 import { ClientSafeProvider, signIn } from 'next-auth/react'
 import Github from '../Icons/github.svg'
+import Osu from '../Icons/osu.svg'
 import { useRouter } from 'next/router'
 
 interface StyleGuide {
@@ -13,6 +14,11 @@ const providerStyleGuides: { [key: string]: StyleGuide } = {
         Logo: Github,
         bg: 'bg-white',
         text: 'text-black',
+    },
+    osu: {
+        Logo: Osu,
+        bg: 'bg-[#FF66AA]',
+        text: 'text-white',
     },
 }
 
