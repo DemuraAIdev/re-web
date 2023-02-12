@@ -1,8 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@mdx-js/mdx': ^2.2.1
-  '@mdx-js/react': ^2.2.1
   '@next-auth/prisma-adapter': ^1.0.5
   '@next/font': 13.1.5
   '@prisma/client': ^4.9.0
@@ -43,6 +41,7 @@ specifiers:
   reading-time: 1.3.0
   rehype-autolink-headings: ^6.1.1
   rehype-citation: ^0.4.0
+  rehype-highlight: ^6.0.0
   rehype-katex: ^6.0.2
   rehype-preset-minify: ^6.0.0
   rehype-prism-plus: ^1.5.0
@@ -60,8 +59,6 @@ specifiers:
   vfile: ^5.3.6
 
 dependencies:
-  '@mdx-js/mdx': 2.2.1
-  '@mdx-js/react': 2.2.1_react@18.2.0
   '@next-auth/prisma-adapter': 1.0.5_itdorc3kbufr4kntuocsjgxwwi
   '@next/font': 13.1.5
   '@prisma/client': 4.9.0_prisma@4.9.0
@@ -92,6 +89,7 @@ dependencies:
   reading-time: 1.3.0
   rehype-autolink-headings: 6.1.1
   rehype-citation: 0.4.0
+  rehype-highlight: 6.0.0
   rehype-katex: 6.0.2
   rehype-preset-minify: 6.0.0
   rehype-prism-plus: 1.5.0
@@ -1448,40 +1446,6 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
-
-  /@mdx-js/mdx/2.2.1:
-    resolution: {integrity: sha512-hZ3ex7exYLJn6FfReq8yTvA6TE53uW9UHJQM9IlSauOuS55J9y8RtA7W+dzp6Yrzr00/U1sd7q+Wf61q6SfiTQ==}
-    dependencies:
-      '@types/estree-jsx': 1.0.0
-      '@types/mdx': 2.0.3
-      estree-util-build-jsx: 2.2.2
-      estree-util-is-identifier-name: 2.1.0
-      estree-util-to-js: 1.1.1
-      estree-walker: 3.0.3
-      hast-util-to-estree: 2.2.1
-      markdown-extensions: 1.1.1
-      periscopic: 3.0.4
-      remark-mdx: 2.2.1
-      remark-parse: 10.0.1
-      remark-rehype: 10.1.0
-      unified: 10.1.2
-      unist-util-position-from-estree: 1.1.2
-      unist-util-stringify-position: 3.0.3
-      unist-util-visit: 4.1.1
-      vfile: 5.3.6
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@mdx-js/react/2.2.1_react@18.2.0:
-    resolution: {integrity: sha512-YdXcMcEnqZhzql98RNrqYo9cEhTTesBiCclEtoiQUbJwx87q9453GTapYU6kJ8ZZ2ek1Vp25SiAXEFy5O/eAPw==}
-    peerDependencies:
-      react: '>=16'
-    dependencies:
-      '@types/mdx': 2.0.3
-      '@types/react': 18.0.27
-      react: 18.2.0
-    dev: false
 
   /@next-auth/prisma-adapter/1.0.5_itdorc3kbufr4kntuocsjgxwwi:
     resolution: {integrity: sha512-VqMS11IxPXrPGXw6Oul6jcyS/n8GLOWzRMrPr3EMdtD6eOalM6zz05j08PcNiis8QzkfuYnCv49OvufTuaEwYQ==}
@@ -3564,14 +3528,6 @@ packages:
     resolution: {integrity: sha512-bEN9VHRyXAUOjkKVQVvArFym08BTWB0aJPppZZr0UNyAqWsLaVfAqP7hbaTJjzHifmB5ebnR8Wm7r7yGN/HonQ==}
     dev: false
 
-  /estree-util-to-js/1.1.1:
-    resolution: {integrity: sha512-tW/ADSJON4o+T8rSmSX1ZXdat4n6bVOu0iTUFY9ZFF2dD/1/Hug8Lc/HYuJRA4Mop9zDZHQMo1m4lIxxJHkTjQ==}
-    dependencies:
-      '@types/estree-jsx': 1.0.0
-      astring: 1.8.4
-      source-map: 0.7.4
-    dev: false
-
   /estree-util-value-to-estree/1.3.0:
     resolution: {integrity: sha512-Y+ughcF9jSUJvncXwqRageavjrNPAI+1M/L3BI3PyLp1nmgYTGUXU6t5z1Y7OWuThoDdhPME07bQU+d5LxdJqw==}
     engines: {node: '>=12.0.0'}
@@ -4128,6 +4084,11 @@ packages:
       hast-util-parse-selector: 3.1.1
       property-information: 6.2.0
       space-separated-tokens: 2.0.2
+    dev: false
+
+  /highlight.js/11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
     dev: false
 
   /html-enumerated-attributes/0.1.0:
@@ -4693,6 +4654,14 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
+    dev: false
+
+  /lowlight/2.8.1:
+    resolution: {integrity: sha512-HCaGL61RKc1MYzEYn3rFoGkK0yslzCVDFJEanR19rc2L0mb8i58XM55jSRbzp9jcQrFzschPlwooC0vuNitk8Q==}
+    dependencies:
+      '@types/hast': 2.3.4
+      fault: 2.0.1
+      highlight.js: 11.7.0
     dev: false
 
   /lru-cache/5.1.1:
@@ -6128,6 +6097,16 @@ packages:
       - encoding
     dev: false
 
+  /rehype-highlight/6.0.0:
+    resolution: {integrity: sha512-q7UtlFicLhetp7K48ZgZiJgchYscMma7XjzX7t23bqEJF8m6/s+viXQEe4oHjrATTIZpX7RG8CKD7BlNZoh9gw==}
+    dependencies:
+      '@types/hast': 2.3.4
+      hast-util-to-text: 3.1.2
+      lowlight: 2.8.1
+      unified: 10.1.2
+      unist-util-visit: 4.1.1
+    dev: false
+
   /rehype-katex/6.0.2:
     resolution: {integrity: sha512-C4gDAlS1+l0hJqctyiU64f9CvT00S03qV1T6HiMzbSuLBgWUtcqydWHY9OpKrm0SpkK16FNd62CDKyWLwV2ppg==}
     dependencies:
@@ -6486,15 +6465,6 @@ packages:
       estree-util-value-to-estree: 1.3.0
       js-yaml: 4.1.0
       toml: 3.0.0
-    dev: false
-
-  /remark-mdx/2.2.1:
-    resolution: {integrity: sha512-R9wcN+/THRXTKyRBp6Npo/mcbGA2iT3N4G8qUqLA5pOEg7kBidHv8K2hHidCMYZ6DXmwK18umu0K4cicgA2PPQ==}
-    dependencies:
-      mdast-util-mdx: 2.0.0
-      micromark-extension-mdxjs: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /remark-parse/10.0.1:

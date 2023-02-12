@@ -19,6 +19,7 @@ import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
+import rehypeHighlight from 'rehype-highlight'
 
 const root = process.cwd()
 
